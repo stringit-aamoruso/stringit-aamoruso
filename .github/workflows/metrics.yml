@@ -1,0 +1,27 @@
+name: Metrics
+
+on:
+  schedule:
+    - cron: "0 0 * * 1"
+
+  push:
+    branches:
+      - main
+
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Terminal
+        uses: lowlighter/metrics@latest
+        with:
+          template: terminal
+          filename: metrics.terminal.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          base: header, activity, metadata
+          config_timezone: Europe/Rome
+          plugin_gists: yes

@@ -1,0 +1,1 @@
+![Metrics](metrics.terminal.svg)
